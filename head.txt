@@ -1,4 +1,5 @@
-<head>
+<!DOCTYPE html>
+<html lang="en">
 	<title>Unicodey</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link href="/bootstrap.min.css" rel="stylesheet">
