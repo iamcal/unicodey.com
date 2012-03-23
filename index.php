@@ -24,7 +24,7 @@ span.quiet {
 
 <form action="/" method="get" class="well form-inline">
 <label>Any string:</label>
-<input type="text" name="u" class="span3" />
+<input type="text" name="u" value="<?=HtmlSpecialChars($_GET['u'])?>" class="span3" />
 <input type="submit" value="Explain" class="btn" />
 [<a href="/?u=&#x65e5;&#x672c;&#x8a9e;">Demo</a>]
 </form>
