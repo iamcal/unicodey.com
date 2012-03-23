@@ -9,10 +9,18 @@
 
 	include('head.txt');
 ?>
+<style>
+table.table-flex {
+	width: auto;
+	max-width: auto;
+}
+</style>
 
-
-<form action="/" method="get">
-<input type="text" name="u" /> <input type="submit" value="go" />
+<form action="/" method="get" class="well form-inline">
+<label>Any string:</label>
+<input type="text" name="u" class="span3" />
+<input type="submit" value="Explain" class="btn" />
+[<a href="/?u=&#x65e5;&#x672c;&#x8a9e;">Demo</a>]
 </form>
 
 
@@ -25,7 +33,7 @@
 		foreach ($chars as $char) $blocks[] = breakdown_char($char);
 		#dumper($blocks);
 ?>
-	<table border="1">
+	<table class="table table-striped table-bordered table-condensed table-flex">
 <?
 	output_block_row('Grapheme', $blocks, 'utf8');
 	output_block_row('Codepoint', $blocks, 'cp_hex');
@@ -115,8 +123,6 @@
 		return substr($s, 0, $prefix).'<b>'.substr($s, $prefix).'</b>';
 	}
 ?>
-
-<a href="/?u=&#x65e5;&#x672c;&#x8a9e;">demo</a>
 
 <?
 	include('foot.txt');
