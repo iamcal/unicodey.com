@@ -22,21 +22,51 @@ span.quiet {
 }
 </style>
 
-<form action="/" method="get" class="well form-inline">
+<div class="well">
+
+<form action="/" method="get" class="form-inline">
 <label>Any string:</label>
 <input type="text" name="u" value="<?=HtmlSpecialChars($_GET['u'])?>" class="span3" />
 <input type="submit" value="Explain" class="btn" />
 [<a href="/?u=&#x65e5;&#x672c;&#x8a9e;">Demo</a>]
 </form>
 
+<form action="/" method="get" class="form-inline">
+<label>Hex bytes:</label>
+<input type="text" name="hex" value="<?=HtmlSpecialChars($_GET['hex'])?>" class="span3" />
+<input type="submit" value="Explain" class="btn" />
+[<a href="/?hex=E6+97+A3+5F">Demo</a>]
+</form>
+
+</div>
 
 
 <?
 	if ($_GET['u']){
-		$chars = preg_split('/(?<!^)(?!$)/u', $_GET['u']);
+		process_utf8_bytes($_GET['u']);
+	}
+
+	if ($_GET['hex']){
+
+		$bytes = preg_split('!\s+!', trim($_GET['hex']));
+		$buffer = '';
+		foreach ($bytes as $byte){
+			$buffer .= chr(hexdec($byte));
+		}
+
+		process_utf8_bytes($buffer);
+	}
+
+
+	function process_utf8_bytes($str){
+		$chars = preg_split('/(?<!^)(?!$)/u', $str);
 
 		$blocks = array();
 		foreach ($chars as $char) $blocks[] = breakdown_char($char);
+		output_blocks($blocks);
+	}
+
+	function output_blocks($blocks){
 		#dumper($blocks);
 ?>
 	<table class="table table-striped table-bordered table-condensed table-flex">
