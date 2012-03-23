@@ -50,9 +50,9 @@ span.quiet {
 	output_block_row('Binary', $blocks, 'cp_bin');
 	output_block_row('UTF-8 Binary', $blocks, 'bins');
 
-	output_block_row('Hex Bytes', $blocks, 'hexes');
-	output_block_row('Dec Bytes', $blocks, 'bytes');
-	output_block_row('C String', $blocks, 'cstr');
+	output_block_row('UTF-8 Hex Bytes', $blocks, 'hexes');
+	output_block_row('UTF-8 Dec Bytes', $blocks, 'bytes');
+	output_block_row('UTF-8 C String', $blocks, 'cstr');
 
 	output_block_row('More Info', $blocks, 'fileformat')
 ?>
