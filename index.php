@@ -118,8 +118,7 @@ span.quiet {
 
 	function format_bin($c){
 
-		if ($c <= 0x3F) return highlight_bin($c, 0); # 00000000 - 00111111, 00-3F
-		if ($c <= 0x7F) return highlight_bin($c, 1); # 01000000 - 01111111, 40-7F
+		if ($c <= 0x7F) return highlight_bin($c, 1); # 00000000 - 01111111, 00-7F
 		if ($c <= 0xBF) return highlight_bin($c, 2); # 10000000 - 10111111, 80-BF
 		if ($c <= 0xDF) return highlight_bin($c, 3); # 11000000 - 11011111, C0-DF
 		if ($c <= 0xEF) return highlight_bin($c, 4); # 11100000 - 11101111, E0-EF
