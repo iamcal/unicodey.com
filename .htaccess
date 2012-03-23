@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST}	^www\.unicodey\.com$	[NC]
+RewriteRule ^(.*)$		http://unicodey.com/$1	[L,R=permanent]
