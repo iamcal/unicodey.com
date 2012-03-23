@@ -14,6 +14,12 @@ table.table-flex {
 	width: auto;
 	max-width: auto;
 }
+span.highlight {
+	xbackground-color: #ff9;
+}
+span.quiet {
+	color: #aaa;
+}
 </style>
 
 <form action="/" method="get" class="well form-inline">
@@ -47,6 +53,8 @@ table.table-flex {
 	output_block_row('Hex Bytes', $blocks, 'hexes');
 	output_block_row('Dec Bytes', $blocks, 'bytes');
 	output_block_row('C String', $blocks, 'cstr');
+
+	output_block_row('More Info', $blocks, 'fileformat')
 ?>
 	</table>
 
@@ -89,6 +97,7 @@ table.table-flex {
 		if (count($bytes) == 5) $codepoint = (($bytes[0] & 0x03) << 24) | (($bytes[1] & 0x3F) << 18) | (($bytes[2] & 0x3F) << 12) | (($bytes[3] & 0x3F) << 6) | ($bytes[4] & 0x3F);
 		if (count($bytes) == 6) $codepoint = (($bytes[0] & 0x01) << 30) | (($bytes[1] & 0x3F) << 24) | (($bytes[2] & 0x3F) << 18) | (($bytes[3] & 0x3F) << 12) | (($bytes[4] & 0x3F) << 6) | ($bytes[5] & 0x3F);
 
+		$hex = sprintf('%X', $codepoint);
 
 		return array(
 			'utf8'		=> $utf8_bytes,
@@ -102,6 +111,8 @@ table.table-flex {
 			'cp_hex'	=> 'U+'.sprintf('%04X', $codepoint),
 			'ent_hex'	=> '&amp;#x'.sprintf('%x', $codepoint).';',
 			'ent_dec'	=> '&amp;#'.$codepoint.';',
+
+			'fileformat'	=> "<a href=\"http://www.fileformat.info/info/unicode/char/{$hex}/index.htm\">click</a>",
 		);
 	}
 
@@ -120,7 +131,7 @@ table.table-flex {
 
 	function highlight_bin($c, $prefix){
 		$s = sprintf('%08b', $c);
-		return substr($s, 0, $prefix).'<b>'.substr($s, $prefix).'</b>';
+		return '<span class="quiet">'.substr($s, 0, $prefix).'</span><span class="highlight">'.substr($s, $prefix).'</span>';
 	}
 ?>
 
