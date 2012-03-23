@@ -9,30 +9,18 @@
 
 	include('head.txt');
 ?>
-<style>
-table.table-flex {
-	width: auto;
-	max-width: auto;
-}
-span.highlight {
-	xbackground-color: #ff9;
-}
-span.quiet {
-	color: #aaa;
-}
-</style>
 
 <div class="well">
 
 <form action="/" method="get" class="form-inline">
-<label>Any string:</label>
+<label style="width: 90px">Any string:</label>
 <input type="text" name="u" value="<?=HtmlSpecialChars($_GET['u'])?>" class="span3" />
 <input type="submit" value="Explain" class="btn" />
 [<a href="/?u=&#x65e5;&#x672c;&#x8a9e;">Demo</a>]
 </form>
 
-<form action="/" method="get" class="form-inline">
-<label>Hex bytes:</label>
+<form action="/" method="get" class="form-inline" style="margin-bottom: 0">
+<label style="width: 90px">Hex bytes:</label>
 <input type="text" name="hex" value="<?=HtmlSpecialChars($_GET['hex'])?>" class="span3" />
 <input type="submit" value="Explain" class="btn" />
 [<a href="/?hex=E6+97+A3+5F">Demo</a>]
@@ -42,8 +30,11 @@ span.quiet {
 
 
 <?
+	$show_readme = 1;
+
 	if ($_GET['u']){
 		process_utf8_bytes($_GET['u']);
+		$show_readme = 0;
 	}
 
 	if ($_GET['hex']){
@@ -55,6 +46,7 @@ span.quiet {
 		}
 
 		process_utf8_bytes($buffer);
+		$show_readme = 0;
 	}
 
 
@@ -163,6 +155,11 @@ span.quiet {
 		return '<span class="quiet">'.substr($s, 0, $prefix).'</span><span class="highlight">'.substr($s, $prefix).'</span>';
 	}
 ?>
+
+<? if ($show_readme){?>
+
+	<p class="leader">Unicodey.com is a bunch of tools for understanding and debugging Unicode strings, specifically the UTF-8 encoding.</p>
+<? } ?>
 
 <?
 	include('foot.txt');

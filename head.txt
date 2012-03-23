@@ -1,10 +1,69 @@
+<?
+	$navbar_light = '#69c';
+	$navbar_dark = '#369';
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<title>Unicodey</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link href="/bootstrap.min.css" rel="stylesheet">
+<style>
+
+body {
+	padding-top: 50px;
+	padding-bottom: 90px;
+	background-color: #fff;
+}
+table.table-flex {
+	width: auto;
+	max-width: auto;
+}
+span.highlight {
+}
+span.quiet {
+	color: #aaa;
+}
+.navbar-inner{
+	background-color: <?=$navbar_dark?>;
+	background-image:-moz-linear-gradient(top, <?=$navbar_light?>, <?=$navbar_dark?>);
+	background-image:-ms-linear-gradient(top, <?=$navbar_light?>, <?=$navbar_dark?>);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(<?=$navbar_light?>), to(<?=$navbar_dark?>));
+	background-image:-webkit-linear-gradient(top, <?=$navbar_light?>, <?=$navbar_dark?>);
+	background-image:-o-linear-gradient(top, <?=$navbar_light?>, <?=$navbar_dark?>);
+	background-image:linear-gradient(top, <?=$navbar_light?>, <?=$navbar_dark?>);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='<?=$navbar_light?>', endColorstr='<?=$navbar_dark?>', GradientType=0);
+}
+.navbar .nav > li > a {
+	color: #ccc;
+}
+p.leader {
+	margin-left: 5%;
+	margin-right: 5%;
+	font-size: 30px;
+	line-height: 36px;
+}
+</style>
 </head>
 <body>
+
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="/">Unicodey</a>
+			<ul class="nav pull-right">
+				<li><a href="https://github.com/iamcal/unicodey.com">Source</a></li>
+			</ul>
+<? if (0){ ?>
+			<ul class="nav">
+				<li class="active"><a href="/"><i class="icon-home icon-white"></i> Home</a></li>
+				<li class=""><a href="/add/"><i class="icon-plus icon-white"></i>Add Character</a></li>
+				<li class=""><a href="/stats/"><i class="icon-signal icon-white"></i> Statistics</a></li>
+				<li class=""><a href="/about/"><i class="icon-info-sign icon-white"></i> About</a></li>
+			</ul>
+<? } ?>
+		</div>
+	</div>
+</div>
 
 <div class="container">
 
