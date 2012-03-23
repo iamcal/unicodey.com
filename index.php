@@ -158,7 +158,13 @@
 
 <? if ($show_readme){?>
 
+<div style="margin: 30px 5% 0 5%">
+
 	<p class="leader">Unicodey.com is a bunch of tools for understanding and debugging Unicode strings, specifically the UTF-8 encoding.</p>
+
+	<p>It was made by <a href="http://www.iamcal.com">Cal Henderson</a>, who is sick of doing this stuff by hand.</p>
+
+</div>
 <? } ?>
 
 <?
