@@ -19,6 +19,13 @@
 [<a href="/?u=&#x65e5;&#x672c;&#x8a9e;">Demo</a>]
 </form>
 
+<form action="/" method="get" class="form-inline">
+<label style="width: 90px">Code point:</label>
+<input type="text" name="cp" value="<?=HtmlSpecialChars($_GET['cp'])?>" class="span3" />
+<input type="submit" value="Explain" class="btn" />
+[<a href="/?cp=2665">Demo</a>]
+</form>
+
 <form action="/" method="get" class="form-inline" style="margin-bottom: 0">
 <label style="width: 90px">Hex bytes:</label>
 <input type="text" name="hex" value="<?=HtmlSpecialChars($_GET['hex'])?>" class="span3" />
@@ -47,6 +54,23 @@
 
 		process_utf8_bytes($buffer);
 		$show_readme = 0;
+	}
+
+	if ($_GET['cp']){
+
+		$cp = trim($_GET['cp']);
+		if (preg_match('!^\d+$!', $cp)){
+
+			$buffer = unicode_chr($cp).unicode_chr(hexdec($cp));
+			process_utf8_bytes($buffer);
+			$show_readme = 0;
+
+		}elseif (preg_match('!^[0-9a-fA-F]+$!', $cp)){
+
+			$buffer = unicode_chr(hexdec($cp));
+			process_utf8_bytes($buffer);
+			$show_readme = 0;
+		}
 	}
 
 
@@ -153,6 +177,28 @@
 	function highlight_bin($c, $prefix){
 		$s = sprintf('%08b', $c);
 		return '<span class="quiet">'.substr($s, 0, $prefix).'</span><span class="highlight">'.substr($s, $prefix).'</span>';
+	}
+
+
+	function unicode_chr($v){
+
+		if ($v < 128){
+			return chr($v);
+		}
+
+		if ($v < 2048){
+			return chr(($v >> 6) + 192) . chr(($v & 63) + 128);
+		}
+
+		if ($v < 65536){
+			return chr(($v >> 12) + 224) . chr((($v >> 6) & 63) + 128) . chr(($v & 63) + 128);
+		}
+
+		if ($v < 2097152){
+			return chr(($v >> 18) + 240) . chr((($v >> 12) & 63) + 128) . chr((($v >> 6) & 63) + 128) . chr(($v & 63) + 128);
+		}
+
+		die("can't create codepoints for $v");
 	}
 ?>
 
