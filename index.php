@@ -46,7 +46,11 @@
 
 	if ($_GET['hex']){
 
-		$bytes = preg_split('!\s+!', trim($_GET['hex']));
+		$in = $_GET['hex'];
+		$in = str_replace('\\x', ' ', $in);
+		$in = trim($in);
+
+		$bytes = preg_split('!\s+!', $in);
 		$buffer = '';
 		foreach ($bytes as $byte){
 			$buffer .= chr(hexdec($byte));
