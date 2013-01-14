@@ -48,6 +48,7 @@
 
 		$in = $_GET['hex'];
 		$in = str_replace('\\x', ' ', $in);
+		$in = str_replace('%', ' ', $in);
 		$in = trim($in);
 
 		$bytes = preg_split('!\s+!', $in);
