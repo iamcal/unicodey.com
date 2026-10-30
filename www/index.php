@@ -54,7 +54,7 @@
 		$bytes = preg_split('!\s+!', $in);
 		$buffer = '';
 		foreach ($bytes as $byte){
-			$buffer .= chr(hexdec($byte));
+			$buffer .= chr((int) fmod(hexdec($byte), 256));
 		}
 
 		process_utf8_bytes($buffer);
@@ -80,7 +80,7 @@
 
 
 	function process_utf8_bytes($str){
-		$chars = preg_split('/(?<!^)(?!$)/u', $str);
+		$chars = preg_split('/(?<!^)(?!$)/u', $str) ?: array();
 
 		$blocks = array();
 		foreach ($chars as $char) $blocks[] = breakdown_char($char);
