@@ -1,4 +1,4 @@
-<?
+<?php
 	$navbar_light = '#69c';
 	$navbar_dark = '#369';
 ?>
@@ -60,14 +60,14 @@ p.leader {
 			<ul class="nav pull-right">
 				<li><a href="https://github.com/iamcal/unicodey.com">Source</a></li>
 			</ul>
-<? if (0){ ?>
+<?php if (0){ ?>
 			<ul class="nav">
 				<li class="active"><a href="/"><i class="icon-home icon-white"></i> Home</a></li>
 				<li class=""><a href="/add/"><i class="icon-plus icon-white"></i>Add Character</a></li>
 				<li class=""><a href="/stats/"><i class="icon-signal icon-white"></i> Statistics</a></li>
 				<li class=""><a href="/about/"><i class="icon-info-sign icon-white"></i> About</a></li>
 			</ul>
-<? } ?>
+<?php } ?>
 		</div>
 	</div>
 </div>

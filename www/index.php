@@ -1,4 +1,4 @@
-<?
+<?php
 	header("Content-type: text/html; charset=UTF-8");
 
 	function dumper($foo){
@@ -36,7 +36,7 @@
 </div>
 
 
-<?
+<?php
 	$show_readme = 1;
 
 	if ($_GET['u'] ?? null){
@@ -91,7 +91,7 @@
 		#dumper($blocks);
 ?>
 	<table class="table table-striped table-bordered table-condensed table-flex">
-<?
+<?php
 	output_block_row('Grapheme', $blocks, 'utf8');
 	output_block_row('Codepoint', $blocks, 'cp_hex');
 
@@ -109,7 +109,7 @@
 ?>
 	</table>
 
-<?
+<?php
 	}
 
 	function output_block_row($label, $blocks, $key){
@@ -207,7 +207,7 @@
 	}
 ?>
 
-<? if ($show_readme){?>
+<?php if ($show_readme){?>
 
 <div style="margin: 30px 5% 0 5%">
 
@@ -216,9 +216,9 @@
 	<p>It was made by <a href="http://www.iamcal.com">Cal Henderson</a>, who is sick of doing this stuff by hand.</p>
 
 </div>
-<? } ?>
+<?php } ?>
 
-<?
+<?php
 	include('foot.txt');
 ?>
 
