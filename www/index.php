@@ -7,7 +7,7 @@
 		echo "</pre>\n";
 	}
 
-	include('head.txt');
+	include('head.php');
 ?>
 
 <div class="well">
