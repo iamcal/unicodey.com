@@ -14,21 +14,21 @@
 
 <form action="/" method="get" class="form-inline">
 <label style="width: 90px">Any string:</label>
-<input type="text" name="u" value="<?=HtmlSpecialChars($_GET['u'] ?? null)?>" class="span3" />
+<input type="text" name="u" value="<?=HtmlSpecialChars($_GET['u'] ?? '')?>" class="span3" />
 <input type="submit" value="Explain" class="btn" />
 [<a href="/?u=&#x65e5;&#x672c;&#x8a9e;">Demo</a>]
 </form>
 
 <form action="/" method="get" class="form-inline">
 <label style="width: 90px">Code point:</label>
-<input type="text" name="cp" value="<?=HtmlSpecialChars($_GET['cp'] ?? null)?>" class="span3" />
+<input type="text" name="cp" value="<?=HtmlSpecialChars($_GET['cp'] ?? '')?>" class="span3" />
 <input type="submit" value="Explain" class="btn" />
 [<a href="/?cp=2665">Demo</a>]
 </form>
 
 <form action="/" method="get" class="form-inline" style="margin-bottom: 0">
 <label style="width: 90px">Hex bytes:</label>
-<input type="text" name="hex" value="<?=HtmlSpecialChars($_GET['hex'] ?? null)?>" class="span3" />
+<input type="text" name="hex" value="<?=HtmlSpecialChars($_GET['hex'] ?? '')?>" class="span3" />
 <input type="submit" value="Explain" class="btn" />
 [<a href="/?hex=E6+97+A3+5F">Demo</a>]
 </form>
